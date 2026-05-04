@@ -34,24 +34,17 @@ from routes.categorise import categorise_bp
 app.register_blueprint(categorise_bp)
 
 # Day 5 — /query (RAG)
-from routes.query import query_bp
-app.register_blueprint(query_bp)
+from routes.query import query_bp          # remove the #
+app.register_blueprint(query_bp)           # remove the #
 
 # Day 6 — /generate-report (async)
 # from routes.generate_report import generate_report_bp
 # app.register_blueprint(generate_report_bp)
 
 # Day 7 — /health
-# from routes.health import health_bp
-# app.register_blueprint(health_bp)
+from routes.health import health_bp
+app.register_blueprint(health_bp)
 
-
-# ---------------------------------------------------------------------------
-# Temporary root health check (replace with health_bp on Day 7)
-# ---------------------------------------------------------------------------
-@app.route("/health", methods=["GET"])
-def health():
-    return jsonify({"status": "healthy", "service": "ai-service", "version": "1.0.0"}), 200
 
 
 # ---------------------------------------------------------------------------
