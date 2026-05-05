@@ -1,5 +1,7 @@
 package com.internship.tool.service;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import com.internship.tool.entity.AuditReport;
 import com.internship.tool.exception.ResourceNotFoundException;
 import com.internship.tool.exception.ValidationException;
@@ -60,5 +62,22 @@ public class AuditReportService {
         if (report.getRiskScore() != null && (report.getRiskScore() < 1 || report.getRiskScore() > 10)) {
             throw new ValidationException("Risk score must be between 1 and 10");
         }
+    }
+
+    public Page<AuditReport> getAllReportsPaged(Pageable pageable) {
+        return auditReportRepository.findByDeletedFalse(pageable);
+    }
+
+    public List<AuditReport> searchReports(String query) {
+        return auditReportRepository.searchReports(query);
+    }
+
+    public java.util.Map<String, Object> getStats() {
+        java.util.Map<String, Object> stats = new java.util.HashMap<>();
+        stats.put("total", auditReportRepository.countByDeletedFalse());
+        stats.put("highRisk", auditReportRepository.countByRiskScoreGreaterThanEqualAndDeletedFalse(8));
+        stats.put("open", auditReportRepository.countByStatusAndDeletedFalse("OPEN"));
+        stats.put("closed", auditReportRepository.countByStatusAndDeletedFalse("CLOSED"));
+        return stats;
     }
 }
