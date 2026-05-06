@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.internship.tool.AuditReportServiceTest" time="0.093" tests="10" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.internship.tool.AuditReportRepositoryTest" time="1.863" tests="6" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="21"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -58,14 +58,16 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="65.0"/>
   </properties>
-  <testcase name="testDeleteReport_Success" classname="com.internship.tool.AuditReportServiceTest" time="0.028"/>
-  <testcase name="testCreateReport_InvalidRiskScore_ThrowsValidationException" classname="com.internship.tool.AuditReportServiceTest" time="0.005"/>
-  <testcase name="testGetAllReports_EmptyList" classname="com.internship.tool.AuditReportServiceTest" time="0.01"/>
-  <testcase name="testCreateReport_EmptyStatus_ThrowsValidationException" classname="com.internship.tool.AuditReportServiceTest" time="0.005"/>
-  <testcase name="testCreateReport_EmptyTitle_ThrowsValidationException" classname="com.internship.tool.AuditReportServiceTest" time="0.002"/>
-  <testcase name="testGetReportById_Success" classname="com.internship.tool.AuditReportServiceTest" time="0.007"/>
-  <testcase name="testGetReportById_NotFound" classname="com.internship.tool.AuditReportServiceTest" time="0.004"/>
-  <testcase name="testUpdateReport_NotFound_ThrowsResourceNotFoundException" classname="com.internship.tool.AuditReportServiceTest" time="0.004"/>
-  <testcase name="testCreateReport_Success" classname="com.internship.tool.AuditReportServiceTest" time="0.004"/>
-  <testcase name="testGetAllReports_Success" classname="com.internship.tool.AuditReportServiceTest" time="0.002"/>
+  <testcase name="testSearchReports_ReturnsList" classname="com.internship.tool.AuditReportRepositoryTest" time="1.771">
+    <system-err><![CDATA[WARNING: A Java agent has been loaded dynamically (C:\Users\JASLIN\.m2\repository\net\bytebuddy\byte-buddy-agent\1.14.10\byte-buddy-agent-1.14.10.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+]]></system-err>
+  </testcase>
+  <testcase name="testCountByStatusAndDeletedFalse" classname="com.internship.tool.AuditReportRepositoryTest" time="0.008"/>
+  <testcase name="testFindByDeletedFalse_ReturnsList" classname="com.internship.tool.AuditReportRepositoryTest" time="0.005"/>
+  <testcase name="testCountByDeletedFalse" classname="com.internship.tool.AuditReportRepositoryTest" time="0.004"/>
+  <testcase name="testFindByIdAndDeletedFalse_Found" classname="com.internship.tool.AuditReportRepositoryTest" time="0.007"/>
+  <testcase name="testFindByIdAndDeletedFalse_NotFound" classname="com.internship.tool.AuditReportRepositoryTest" time="0.006"/>
 </testsuite>
