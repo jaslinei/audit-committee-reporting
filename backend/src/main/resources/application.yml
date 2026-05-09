@@ -31,3 +31,7 @@ spring:
 jwt:
   secret: ${JWT_SECRET}
   expiry: ${JWT_EXPIRY}
+
+  ai:
+  service:
+    url: http://localhost:5000
